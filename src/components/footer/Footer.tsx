@@ -12,15 +12,14 @@ import { MdOutlineFavorite } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
 
-const Header = () => {
+const Footer = () => {
     return (
-        <header className=" hidden md:flex md:items-center md:justify-between px-4 py-3 w-full bg-white shadow-sm">
+        <footer className=" hidden md:flex md:items-center md:justify-between px-4 py-3 w-full bg-[#F4F5F6] shadow-sm">
             <div className='flex gap-5 items-center  text-black'>
                 <Link href="/" className="flex items-center gap-2" prefetch={false}>
                     <Image src={logo} alt={'logo'} width={40} height={40} />
                     <div className='flex flex-col'>
                         <span className="text-lg  font-bold">Mark8</span>
-                        <span className="text-[#495D69] text-sm">By Awesomity Lab</span>
                     </div>
                 </Link>
                 <Link href="/" className="text-sm flex gap-1 items-center font-medium hover:text-primary" prefetch={false}>
@@ -34,10 +33,10 @@ const Header = () => {
                 <button className="text-sm hover:text-primary">
                     <IoSearch size={20} />
                 </button>
-                <Link href="/stores" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]" prefetch={false}>
+                <Link href="/cart" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]" prefetch={false}>
                     <IoCartOutline size={20} /> My Cart
                 </Link>
-                <Link href="/stores" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]" prefetch={false}>
+                <Link href="/saved" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]" prefetch={false}>
                     <MdFavoriteBorder size={20} /> Saved
                 </Link>
                 <button className="text-sm border px-8 py-2 rounded flex gap-1 items-center font-medium hover:text-primary text-[#495D69]">
@@ -52,8 +51,8 @@ const Header = () => {
                     </button>
                 </div>
             </nav>
-        </header>
+        </footer>
     )
 }
 
-export default Header
+export default Footer
