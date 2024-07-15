@@ -1,12 +1,6 @@
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
+import HomeContentLayout from "@/components/home/HomeContentLayout";
 
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <Footer />
-    </>
-  );
+  return <HomeContentLayout />
 }

@@ -8,13 +8,12 @@ import { TbSmartHome } from "react-icons/tb";
 import { IoSearch } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
-import { MdOutlineFavorite } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
 
 const Header = () => {
     return (
-        <header className=" hidden md:flex md:items-center md:justify-between px-4 py-3 w-full bg-white shadow-sm">
+        <header className=" hidden z-50 md:flex md:items-center md:justify-between px-12 py-3 w-full fixed top-0 bg-white shadow">
             <div className='flex gap-5 items-center  text-black'>
                 <Link href="/" className="flex items-center gap-2" prefetch={false}>
                     <Image src={logo} alt={'logo'} width={40} height={40} />
@@ -34,10 +33,10 @@ const Header = () => {
                 <button className="text-sm hover:text-primary">
                     <IoSearch size={20} />
                 </button>
-                <Link href="/stores" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]" prefetch={false}>
+                <Link href="/cart" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]" prefetch={false}>
                     <IoCartOutline size={20} /> My Cart
                 </Link>
-                <Link href="/stores" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]" prefetch={false}>
+                <Link href="/saved" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]" prefetch={false}>
                     <MdFavoriteBorder size={20} /> Saved
                 </Link>
                 <button className="text-sm border px-8 py-2 rounded flex gap-1 items-center font-medium hover:text-primary text-[#495D69]">
