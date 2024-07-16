@@ -1,9 +1,6 @@
+import HomeContentLayout from "@/components/home/HomeContentLayout";
 
 
 export default function Home() {
-  return (
-    <main className="p-24">
-      
-    </main>
-  );
+  return <HomeContentLayout />
 }

@@ -16,7 +16,7 @@ bun dev
 
 To run test you can use the following
 
-````bash
+```bash
 yarn test
 #or
 yarn test-ui
