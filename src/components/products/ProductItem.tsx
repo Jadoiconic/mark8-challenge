@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 import { FaRegHeart } from "react-icons/fa";
@@ -9,8 +10,9 @@ interface ProductItemProps {
 }
 
 const ProductItem = ({ index }: ProductItemProps) => {
+    const itemId = 123
     return (
-        <div className="py-4">
+        <Link href={`/details/${itemId}`} className="py-4">
             <div className="h-40 bg-gray-200 rounded-md mb-4" />
                 <h3 className="font-semibold">Product {index + 1}</h3>
             <div className="flex justify-between items-center">
@@ -27,7 +29,7 @@ const ProductItem = ({ index }: ProductItemProps) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

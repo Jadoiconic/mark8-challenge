@@ -7,7 +7,7 @@ import logo from "@/assets/logo/logo.png";
 
 import { BiHeart, BiStore, BiTrash } from "react-icons/bi";
 import { TbSmartHome } from "react-icons/tb";
-import { IoSearch } from "react-icons/io5";
+import { IoInformationCircleOutline, IoSearch } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -16,6 +16,8 @@ import { TbHeadset } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { FiInfo } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
+import CartItem from '../cart/CartItem';
 
 const Header = () => {
     const [cartModelIsOpen, setCartModelIsOpen] = useState(false);
@@ -121,8 +123,10 @@ const Header = () => {
                             <div className='w-3/5 h-screen bg-black opacity-40' onClick={toggleMyCart}></div>
 
                             <div className="w-2/5 bg-white">
+
+                                {/* cart header */}
                                 <div className="flex justify-between w-full items-center border px-4 py-5">
-                                    <h1>My Cart (2)</h1>
+                                    <h1 className='flex space-x-2 items-center cursor-pointer' onClick={toggleMyCart}><IoMdClose size={20} /> <span>My Cart (2)</span></h1>
                                     <div className='flex gap-2'>
                                         <button className='border rounded py-1 px-4 flex items-center space-x-2'>
                                             <BiHeart color='#C1CF16' size={20} />
@@ -133,6 +137,36 @@ const Header = () => {
                                         </button>
                                     </div>
                                 </div>
+
+                                {/* cart body */}
+                                <div className='flex space-x-3 items-center py-2 bg-[#ddd] px-4'>
+                                    <IoInformationCircleOutline />
+                                    <p>
+                                        By proceeding you won't be charged yet
+                                    </p>
+                                </div>
+                                <div className='h-[75vh] overflow-scroll'>
+
+                                    <div className='px-4 py-4'>
+                                        {Array.from({ length: 4 }).map((_, index) => (
+                                            <div key={index}>
+                                                <CartItem index={index} />
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                </div>
+
+                                {/* cart footer */}
+
+                                <div className='flex justify-between px-4 border flex-end py-4'>
+                                    <div className='text-sm'>
+                                        <p>Total</p>
+                                        <h1 className='font-bold'>36,000 Rwf</h1>
+                                    </div>
+                                    <button className='py-1 px-4 font-bold rounded bg-[#C1CF16]'>$ checkout</button>
+                                </div>
+
                             </div>
 
                         </div>
