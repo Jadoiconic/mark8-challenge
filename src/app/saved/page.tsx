@@ -1,10 +1,13 @@
 "use client"
 
+import DefaultLayOut from "@/components/layout/DefaultLayOut"
+import FavoriteItems from "@/components/savedItems/SavedItems"
+
 
 const SavedItems = () => {
-    return <>
-        <h1>Saved Items</h1>
-    </>
+    return <DefaultLayOut>
+        <FavoriteItems />
+    </DefaultLayOut>
 }
 
 

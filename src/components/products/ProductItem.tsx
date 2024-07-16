@@ -10,7 +10,7 @@ interface ProductItemProps {
 
 const ProductItem = ({ index }: ProductItemProps) => {
     return (
-        <div className="p-4">
+        <div className="py-4">
             <div className="h-40 bg-gray-200 rounded-md mb-4" />
                 <h3 className="font-semibold">Product {index + 1}</h3>
             <div className="flex justify-between items-center">

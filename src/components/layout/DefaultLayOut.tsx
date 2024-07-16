@@ -9,7 +9,7 @@ export default function DefaultLayOut({ children }: LayOutProps) {
     return (
         <>
             <Header />
-            <div className="px-12 mt-[12vh]">
+            <div className="px-12 mt-[12vh] min-h-[80vh]">
                 {children}
             </div>
             <Footer />

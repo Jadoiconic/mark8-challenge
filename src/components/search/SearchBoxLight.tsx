@@ -8,13 +8,13 @@ import { LuSettings2 } from "react-icons/lu";
 
 
 
-const SearchBox = () => {
+const SearchBoxLight = () => {
   const [inputValue, setInputValue] = useState("")
   return (
-    <header className="bg-[#1a1f2b] text-white py-10 rounded">
+    <header className="bg-[#F7F8FB] text-white py-10 rounded">
         <div className="text-center">
-          <h1 className="text-3xl font-bold">
-            Welcome to <span className="text-[#a3d900]">Mark8</span>
+          <h1 className="text-3xl text-black font-bold">
+            <span className="text-[#a3d900]">Mark8</span> Store
           </h1>
           <p className="mt-2">12,932 Products</p>
           <div className="relative mt-6 mx-auto w-full max-w-2xl">
@@ -23,7 +23,7 @@ const SearchBox = () => {
             onChange={(e)=>{setInputValue(e.target.value)}}
               type="text"
               placeholder="What are you looking for?"
-              className="w-full py-3 pl-10 pr-10 rounded bg-[#2b3240] text-white placeholder-gray-400"
+              className="w-full py-3 pl-10 pr-10 rounded bg-[#eee] text-white placeholder-gray-400"
             />
             
             <IoSearch
@@ -33,20 +33,20 @@ const SearchBox = () => {
       <LuSettings2
         size={20}
         className="absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90"
-        style={{ color: "white" }}
+        style={{ color: "black" }}
       />
           </div>
           <div className="mt-4 flex justify-center space-x-4">
-            <button className="text-white border rounded-full px-4 py-1 border-white">
+            <button className="text-black border rounded-full px-4 py-1 border-black">
               All
             </button>
-            <button className="text-gray-400 border rounded-full px-4 py-1 border-gray-400">
+            <button className="text-gray-600 border rounded-full px-4 py-1 border-gray-400">
               Vectors
             </button>
-            <button className="text-gray-400 border rounded-full px-4 py-1 border-gray-400">
+            <button className="text-gray-600 border rounded-full px-4 py-1 border-gray-400">
               Icons
             </button>
-            <button className="text-gray-400 border rounded-full px-4 py-1 border-gray-400">
+            <button className="text-gray-600 border rounded-full px-4 py-1 border-gray-400">
               Backgrounds
             </button>
           </div>
@@ -55,4 +55,4 @@ const SearchBox = () => {
   )
 }
 
-export default SearchBox
+export default SearchBoxLight
