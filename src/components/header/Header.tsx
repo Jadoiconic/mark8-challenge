@@ -120,9 +120,9 @@ const Header = () => {
                 {cartModelIsOpen && (
                     <div className="absolute w-full h-screen z-index-50 top-0 bottom-0 right-0 left-0 rounded-md shadow-lg " >
                         <div className='flex justify-between'>
-                            <div className='w-3/5 h-screen bg-black opacity-40' onClick={toggleMyCart}></div>
+                            <div className='w-4/6 h-screen bg-black opacity-40' onClick={toggleMyCart}></div>
 
-                            <div className="w-2/5 bg-white">
+                            <div className="w-2/6 bg-white">
 
                                 {/* cart header */}
                                 <div className="flex justify-between w-full items-center border px-4 py-5">
@@ -148,7 +148,7 @@ const Header = () => {
                                 <div className='h-[75vh] overflow-scroll'>
 
                                     <div className='px-4 py-4'>
-                                        {Array.from({ length: 4 }).map((_, index) => (
+                                        {Array.from({ length: 30 }).map((_, index) => (
                                             <div key={index}>
                                                 <CartItem index={index} />
                                             </div>
