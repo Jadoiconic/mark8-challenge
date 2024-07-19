@@ -74,7 +74,7 @@ const ProductDetails = () => {
                             <div>AwesomeShop 1</div>
                         </div>
                         <div>
-                            <Button label='Contact Store' onClick={() => { }}>
+                            <Button label='Contact Store' onClick={() => {alert("Clicked!") }}>
                                 <BiPhone color='#C1CF16' />
                             </Button>
                         </div>

@@ -108,7 +108,7 @@ const Header = () => {
                                         <span>Settings</span>
                                     </Link>
                                 </div>
-                                <div className="border-t border-gray-200 my-2" />
+                                <div className="border-t border-gray-200 mb-2" />
                                 <Link href="#" className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
                                     <RiLogoutCircleRLine />
                                     <span>Logout</span>

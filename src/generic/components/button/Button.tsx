@@ -8,7 +8,7 @@ type ButtonProps = {
 
 const Button = ({ label, onClick, children }: ButtonProps) => {
   return (
-    <button className='flex space-x-2 py-1 border items-center px-4 rounded-lg'>
+    <button onClick={onClick} className='flex space-x-2 py-1 border items-center px-4 rounded-lg'>
       {children}
       <span>{label}</span>
     </button>

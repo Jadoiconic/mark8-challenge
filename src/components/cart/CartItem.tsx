@@ -1,11 +1,17 @@
+import { decrement, increment } from '@/redux/features/counterSlice'
+import { useAppDispatch } from '@/redux/hooks'
+import { RootState } from '@/redux/store/store'
 import React from 'react'
 import { BiTrash } from 'react-icons/bi'
+import { useSelector } from 'react-redux'
 
 export type CartItemProps = {
     index: number
 }
 
 const CartItem = ({ index }: CartItemProps) => {
+    const counter = useSelector((state:RootState)=>state.counter.value)
+    const dispatch = useAppDispatch()
     return (
         <div className='py-4 border rounded-lg px-4 my-2'>
             <div className='flex justify-between items-center'>
@@ -18,9 +24,9 @@ const CartItem = ({ index }: CartItemProps) => {
                     </div>
                 </div>
                 <div className='flex justify-center space-x-3'>
-                    <button className='px-4 py-1 border rounded'>-</button>
-                    <div className='bg-[#0C0C0D0A] px-8 py-1'>5</div>
-                    <button className='px-4 py-1 border rounded'>+</button>
+                    <button className='px-4 py-1 border rounded' onClick={()=>dispatch(decrement())}>-</button>
+                    <div className='bg-[#0C0C0D0A] px-8 py-1'>{counter}</div>
+                    <button className='px-4 py-1 border rounded' onClick={()=>dispatch(increment())}>+</button>
                     <button className='px-4 py-1 border rounded'><BiTrash color='red' size={20} /></button>
                 </div>
             </div>
