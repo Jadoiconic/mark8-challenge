@@ -1,4 +1,4 @@
-import { decrement, increment } from '@/redux/features/counterSlice'
+import { incrementQuantity, decrementQuantity, removeProduct } from '@/redux/features/counterSlice'
 import { useAppDispatch } from '@/redux/hooks'
 import { RootState } from '@/redux/store/store'
 import React from 'react'
@@ -6,11 +6,14 @@ import { BiTrash } from 'react-icons/bi'
 import { useSelector } from 'react-redux'
 
 export type CartItemProps = {
+    productName:string
     index: number
+    quantity:number
+    price:number
 }
 
-const CartItem = ({ index }: CartItemProps) => {
-    const counter = useSelector((state:RootState)=>state.counter.value)
+const CartItem = ({ index , productName, quantity, price}: CartItemProps) => {
+    const counter = useSelector((state:RootState)=>state.cart.products)
     const dispatch = useAppDispatch()
     return (
         <div className='py-4 border rounded-lg px-4 my-2'>
@@ -19,15 +22,15 @@ const CartItem = ({ index }: CartItemProps) => {
                     <div> {index + 1}</div>
                     <div className='h-10 w-10 bg-[#F7F8FB] rounded-lg' />
                     <div>
-                        <h1 className='font-semibold text-sm'>Product 1</h1>
-                        <h4 className='text-slate-400 text-sm'>9000 Rwf</h4>
+                        <h1 className='font-semibold text-sm'>{productName}</h1>
+                        <h4 className='text-slate-400 text-sm'>{price} Rwf</h4>
                     </div>
                 </div>
                 <div className='flex justify-center space-x-3'>
-                    <button className='px-4 py-1 border rounded' onClick={()=>dispatch(decrement())}>-</button>
-                    <div className='bg-[#0C0C0D0A] px-8 py-1'>{counter}</div>
-                    <button className='px-4 py-1 border rounded' onClick={()=>dispatch(increment())}>+</button>
-                    <button className='px-4 py-1 border rounded'><BiTrash color='red' size={20} /></button>
+                    <button className='px-4 py-1 border rounded' onClick={()=>dispatch(decrementQuantity(productName))}>-</button>
+                    <div className='bg-[#0C0C0D0A] px-8 py-1'>{quantity}</div>
+                    <button className='px-4 py-1 border rounded' onClick={()=>dispatch(incrementQuantity(productName))}>+</button>
+                    <button className='px-4 py-1 border rounded'><BiTrash onClick={()=>dispatch(removeProduct(productName))} color='red' size={20} /></button>
                 </div>
             </div>
         </div>

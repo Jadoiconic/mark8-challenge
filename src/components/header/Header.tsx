@@ -18,6 +18,10 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { FiInfo } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import CartItem from '../cart/CartItem';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '@/redux/hooks';
+import { RootState } from '@/redux/store/store';
+import { clearCart } from '@/redux/features/counterSlice';
 
 const Header = () => {
     const [cartModelIsOpen, setCartModelIsOpen] = useState(false);
@@ -28,6 +32,11 @@ const Header = () => {
     const toggleMyCart = () => {
         setCartModelIsOpen(!cartModelIsOpen);
     };
+
+    const products = useSelector((state: RootState) => state.cart.products);
+    const totalCart = products.reduce((total, item) => total + item.price * item.quantity, 0);
+    const dispatch = useAppDispatch();
+
 
     return (
         <>
@@ -52,7 +61,7 @@ const Header = () => {
                         <IoSearch size={20} />
                     </button>
                     <button onClick={toggleMyCart} className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]">
-                        <IoCartOutline size={20} /> My Cart
+                        <IoCartOutline size={20} /> My Cart {products.length > 1 ? <span>({products.length})</span> : <></>}
                     </button>
                     <Link href="/saved" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]">
                         <MdFavoriteBorder size={20} /> Saved
@@ -126,14 +135,14 @@ const Header = () => {
 
                                 {/* cart header */}
                                 <div className="flex justify-between w-full items-center border px-4 py-5">
-                                    <h1 className='flex space-x-2 items-center cursor-pointer' onClick={toggleMyCart}><IoMdClose size={20} /> <span>My Cart (2)</span></h1>
+                                    <h1 className='flex space-x-2 items-center cursor-pointer' onClick={toggleMyCart}><IoMdClose size={20} /> <span>My Cart ({products.length})</span></h1>
                                     <div className='flex gap-2'>
                                         <button className='border rounded py-1 px-4 flex items-center space-x-2'>
                                             <BiHeart color='#C1CF16' size={20} />
                                             <span> Save Cart For later</span>
                                         </button>
                                         <button className='border rounded py-1 px-4'>
-                                            <BiTrash color='red' size={20} />
+                                            <BiTrash color='red' onClick={() => dispatch(clearCart())} size={20} />
                                         </button>
                                     </div>
                                 </div>
@@ -148,9 +157,13 @@ const Header = () => {
                                 <div className='h-[75vh] overflow-scroll'>
 
                                     <div className='px-4 py-4'>
-                                        {Array.from({ length: 4 }).map((_, index) => (
+                                        {products.map((item, index) => (
                                             <div key={index}>
-                                                <CartItem index={index} />
+                                                <CartItem
+                                                    productName={item.productName}
+                                                    price={item.price}
+                                                    quantity={item.quantity}
+                                                    index={index} />
                                             </div>
                                         ))}
                                     </div>
@@ -162,7 +175,7 @@ const Header = () => {
                                 <div className='flex justify-between px-4 border flex-end py-4'>
                                     <div className='text-sm'>
                                         <p>Total</p>
-                                        <h1 className='font-bold'>36,000 Rwf</h1>
+                                        <h1 className='font-bold'>{totalCart} Rwf</h1>
                                     </div>
                                     <button className='py-1 px-4 font-bold rounded bg-[#C1CF16]'>$ checkout</button>
                                 </div>

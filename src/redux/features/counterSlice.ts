@@ -1,27 +1,55 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CounterState {
-    value: number
+interface Product {
+    productName: string;
+    price: number;
+    quantity: number;
 }
 
-const initialState: CounterState = {
-    value: 1
+interface CartState {
+    products: Product[];
 }
 
-const counterSlice = createSlice({
-    name: "counter",
+const initialState: CartState = {
+    products: [
+        { productName: "iPhone", price: 400000, quantity: 2 },
+        { productName: "iPad", price: 80000, quantity: 1 },
+        { productName: "Headset", price: 8000, quantity: 4 },
+    ]
+};
+
+const cartSlice = createSlice({
+    name: "cart",
     initialState,
     reducers: {
-        increment: (state) => {
-            state.value += 1
+        addProduct: (state, action: PayloadAction<Product>) => {
+            const product = state.products.find(product => product.productName === action.payload.productName);
+            if (product) {
+                return;
+            }
+            state.products.push(action.payload);
         },
-        decrement: (state) => {
-            if (state.value <= 1) return
-            state.value -= 1
+        removeProduct: (state, action: PayloadAction<string>) => {
+            state.products = state.products.filter(product => product.productName !== action.payload);
         },
-    },
-})
+        incrementQuantity: (state, action: PayloadAction<string>) => {
+            const product = state.products.find(product => product.productName === action.payload);
+            if (product) {
+                product.quantity += 1;
+            }
+        },
+        decrementQuantity: (state, action: PayloadAction<string>) => {
+            const product = state.products.find(product => product.productName === action.payload);
+            if (product && product.quantity > 1) {
+                product.quantity -= 1;
+            }
+        },
+        clearCart: (state) => {
+            state.products = [];
+          }
+    }
+});
 
-export const { increment, decrement } = counterSlice.actions
+export const { addProduct, removeProduct, incrementQuantity, decrementQuantity, clearCart } = cartSlice.actions;
 
-export default counterSlice.reducer
+export default cartSlice.reducer;
