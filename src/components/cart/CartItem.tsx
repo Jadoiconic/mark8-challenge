@@ -1,22 +1,20 @@
-import { incrementQuantity, decrementQuantity, removeProduct } from '@/redux/features/counterSlice'
+import { incrementQuantity, decrementQuantity, removeProduct } from '@/redux/features/cartSlice'
 import { useAppDispatch } from '@/redux/hooks'
-import { RootState } from '@/redux/store/store'
 import React from 'react'
 import { BiTrash } from 'react-icons/bi'
-import { useSelector } from 'react-redux'
 
 export type CartItemProps = {
     productName:string
     index: number
     quantity:number
     price:number
+
 }
 
 const CartItem = ({ index , productName, quantity, price}: CartItemProps) => {
-    const counter = useSelector((state:RootState)=>state.cart.products)
     const dispatch = useAppDispatch()
     return (
-        <div className='py-4 border rounded-lg px-4 my-2'>
+        <div key={index} className='py-4 border rounded-lg px-4 my-2'>
             <div className='flex justify-between items-center'>
                 <div className='flex space-x-4'>
                     <div> {index + 1}</div>

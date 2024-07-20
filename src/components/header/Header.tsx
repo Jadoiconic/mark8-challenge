@@ -21,7 +21,7 @@ import CartItem from '../cart/CartItem';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/redux/hooks';
 import { RootState } from '@/redux/store/store';
-import { clearCart } from '@/redux/features/counterSlice';
+import { clearCart } from '@/redux/features/cartSlice';
 
 const Header = () => {
     const [cartModelIsOpen, setCartModelIsOpen] = useState(false);
@@ -158,13 +158,11 @@ const Header = () => {
 
                                     <div className='px-4 py-4'>
                                         {products.map((item, index) => (
-                                            <div key={index}>
-                                                <CartItem
-                                                    productName={item.productName}
-                                                    price={item.price}
-                                                    quantity={item.quantity}
-                                                    index={index} />
-                                            </div>
+                                            <CartItem
+                                                productName={item.productName}
+                                                price={item.price}
+                                                quantity={item.quantity}
+                                                index={index} />
                                         ))}
                                     </div>
 
