@@ -12,9 +12,9 @@ interface CartState {
 
 const initialState: CartState = {
     products: [
-        { productName: "iPhone", price: 400000, quantity: 2 },
-        { productName: "iPad", price: 80000, quantity: 1 },
-        { productName: "Headset", price: 8000, quantity: 4 },
+        { productName: "iPhone", price: 8000, quantity: 2 },
+        { productName: "iPad", price: 5000, quantity: 1 },
+        { productName: "Headset", price: 800, quantity: 4 },
     ]
 };
 

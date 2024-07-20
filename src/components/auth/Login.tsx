@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import axios from 'axios';
 import logo from '../../assets/logo/logo.png';
 import Link from 'next/link';
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -9,10 +10,17 @@ import { FiLock } from "react-icons/fi";
 import TextInput from '@/generic/components/searchInput/TextInput';
 import Image from 'next/image';
 import { BiLogInCircle } from 'react-icons/bi';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter()
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    
+  }
 
   return (
     <div className='md:w-2/5 lg:w-2/5 xl:w-2/5'>
@@ -27,7 +35,7 @@ const Login = () => {
         {/* right */}
         <div className='md:w-1/2 lg:w-1/2 xl:w-1/2 bg-white min-h-[27vh] p-5'>
           <h1 className='font-bold'>Login</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <label className='font-semibold text-sm '>Email</label>
             <TextInput
               value={email}
@@ -49,9 +57,10 @@ const Login = () => {
               iconColor={'#C1CF16'}
             />
             <div className='flex justify-between pt-4'>
-                <Link href="/auth/forgot-password font-semibold">Forgot Password?</Link>
-                <button className='py-1 px-4 items-center flex space-x-2 rounded-lg bg-[#C1CF16]'><span>Login</span> <BiLogInCircle /></button>
-
+              <Link href="/auth/forgot-password" className='font-semibold'>Forgot Password?</Link>
+              <button type='submit' className='py-1 px-4 items-center flex space-x-2 rounded-lg bg-[#C1CF16]'>
+                <span>Login</span> <BiLogInCircle />
+              </button>
             </div>
           </form>
         </div>
