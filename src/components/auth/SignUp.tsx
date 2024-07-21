@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from 'react';
-import axios from 'axios';
 import Link from 'next/link';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { FiLock } from "react-icons/fi";
@@ -14,7 +13,7 @@ import cn from '@/generic/utils/cn';
 
 const SignUp = () => {
 
-    const {signUp,loading,error:serverError} = useAuth()
+    const { signUp, signIn, loading, error: serverError } = useAuth()
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -36,12 +35,12 @@ const SignUp = () => {
             return;
         }
 
-        if(password.length < 8){
+        if (password.length < 8) {
             setError("Password less than 8 characters")
             return
         }
 
-        const user: UserSignUp =  {
+        const user: UserSignUp = {
             email,
             password,
             firstName,
@@ -49,7 +48,17 @@ const SignUp = () => {
             phoneNumber: phone
         }
 
-     const response =  await  signUp(user)
+        const response = await signUp(user)
+        if (response.status === 201) {
+            const data = await signIn({
+                email,
+                password
+            })
+            if (data) {
+                router.push("/")
+            }
+        }
+
 
     };
 
@@ -61,7 +70,7 @@ const SignUp = () => {
                 <h1 className='font-bold'>Register</h1>
                 {error && <div className="text-red-500">{error}</div>}
                 {success && <div className="text-green-500">{success}</div>}
-                <div className='w-full flex justify-between'>
+                <div className='w-full md:flex justify-between'>
                     {/* left */}
                     <div className='md:w-1/2 lg:w-1/2 xl:w-1/2 bg-white'>
                         <label className='font-semibold text-sm'>First Name</label>
@@ -96,7 +105,7 @@ const SignUp = () => {
                         />
                     </div>
                     {/* right */}
-                    <div className='md:w-1/2 lg:w-1/2 xl:w-1/2 bg-white pl-5'>
+                    <div className='md:w-1/2 lg:w-1/2 xl:w-1/2 bg-white md:pl-5'>
                         <label className='font-semibold text-sm'>Last Name</label>
                         <TextInput
                             value={lastName}
@@ -130,16 +139,15 @@ const SignUp = () => {
                     </div>
                 </div>
 
-                {hasErrors && 
-                
-                serverError.message.map((error,index)=>  <div key={index} className="text-red-500"> {index + 1}. {error}</div> )}
+                {hasErrors &&
+                    serverError.message.map((error, index) => <div key={index} className="text-red-500"> {index + 1}. {error}</div>)}
                 <div className='flex justify-between px-5 pt-8'>
                     <div className='text-sm'>
-                        <input type="checkbox"  className='border-[#C1CF16] border' /> I agree to the <span className='underlined'>Terms and conditions</span></div>
-                    
-                   
-                    
-                    <button disabled={loading} type='submit' className= {cn('py-1 px-4 items-center flex space-x-2 rounded-lg bg-[#C1CF16]',{"bg-gray-300":loading})}>
+                        <input type="checkbox" className='border-[#C1CF16] border' /> I agree to the <span className='underlined'>Terms and conditions</span></div>
+
+
+
+                    <button disabled={loading} type='submit' className={cn('py-1 px-4 items-center flex space-x-2 rounded-lg bg-[#C1CF16]', { "bg-gray-300": loading })}>
                         <span>Register</span> <BiLogInCircle />
                     </button>
                 </div>

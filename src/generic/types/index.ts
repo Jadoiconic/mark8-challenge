@@ -28,6 +28,7 @@ export interface Role {
 export interface ServerResponseError {
     message: string[]
     statusCode: number
+    status?: number
     error: string
 }
 
@@ -41,5 +42,20 @@ export type UserSignUp = {
 
 export type UserLogin = {
     email: string
-    passworord: string
+    password: string
+}
+
+export interface ServerAuthResponse {
+    status: number
+    message: string
+    data: Data
+  }
+  
+  export interface Data {
+    accessToken: string
+    refreshToken: string
+  }
+
+export type RefleshtToken = {
+    token: string
 }

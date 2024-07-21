@@ -6,7 +6,8 @@ export const BASE_URL = "https://api.mark8.awesomity.rw"
 export const ENDPOINTS = {
     SIGN_IN :    "auth/login",
     SIGN_UP : "auth/signup",
-    LOGOUT:"auth/logout"
+    LOGOUT:"auth/logout",
+    REFLESH_TOKEN: "auth/get-new-access-token"
 }
 
 

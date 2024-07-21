@@ -22,8 +22,10 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/redux/hooks';
 import { RootState } from '@/redux/store/store';
 import { clearCart } from '@/redux/features/cartSlice';
+import useAuth from '@/generic/hooks/auth/useAuth';
 
 const Header = () => {
+    const { logout } = useAuth()
     const [cartModelIsOpen, setCartModelIsOpen] = useState(false);
     const [profileModelIsOpen, setProfileModelIsOpen] = useState(false);
     const toggleProfileMenu = () => {
@@ -36,6 +38,10 @@ const Header = () => {
     const products = useSelector((state: RootState) => state.cart.products);
     const totalCart = products.reduce((total, item) => total + item.price * item.quantity, 0);
     const dispatch = useAppDispatch();
+
+    const handleLogout = async () => {
+        await logout()
+    }
 
 
     return (
@@ -118,10 +124,10 @@ const Header = () => {
                                     </Link>
                                 </div>
                                 <div className="border-t border-gray-200 mb-2" />
-                                <Link href="#" className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
+                                <button onClick={handleLogout} className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
                                     <RiLogoutCircleRLine />
                                     <span>Logout</span>
-                                </Link>
+                                </button>
                             </div>
                         )}
                     </div>

@@ -10,7 +10,7 @@ const SignUpPage = () => {
             <Image
                 src={bgImage}
                 alt="bg"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", height:"100%" }}
                 quality={100}
                 className='z-0 bg-[#E3E3E3]'
             />
