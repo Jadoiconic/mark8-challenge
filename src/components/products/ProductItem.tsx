@@ -18,7 +18,7 @@ interface ProductItemProps {
 
 const ProductItem = ({ index, productId, productName, thumbnail, unitPrice }: ProductItemProps) => {
     const dispatch = useAppDispatch();
-    const favorites = useAppSelector(state => state.favorite.favorites || []); // Ensure it's an array
+    const favorites = useAppSelector(state => state.favorite.favorites || []);
 
     const handleAddProduct = () => {
         const newProduct = { productName, price: unitPrice, quantity: 1, thumbnail };
@@ -26,7 +26,7 @@ const ProductItem = ({ index, productId, productName, thumbnail, unitPrice }: Pr
     };
 
     const handleAddToFavorite = () => {
-        const newProduct = { productName, price: unitPrice, quantity: 1, thumbnail };
+        const newProduct = { productName, price: unitPrice, quantity: 1, thumbnail, productId };
         dispatch(addFavorite(newProduct));
     };
 
@@ -34,8 +34,8 @@ const ProductItem = ({ index, productId, productName, thumbnail, unitPrice }: Pr
         dispatch(removeFavorite(productName));
     };
 
-    // Check if the product is in the favorites list
-    const isFavorite = favorites.some((favorite: any) => favorite.productName === productName);
+
+    const isFavorite = favorites.some((favorite: any) => favorite.productId === productId);
 
     return (
         <div className="py-4" key={index}>

@@ -5,7 +5,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface Favorite {
     productName: string;
     price: number;
-    thumbnail: string
+    thumbnail: string;
+    productId: string
 }
 
 interface FavoriteState {

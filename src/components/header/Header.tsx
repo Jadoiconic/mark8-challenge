@@ -11,7 +11,7 @@ import { IoInformationCircleOutline, IoSearch } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa6";
+import { FaHeart, FaRegHeart, FaRegUser } from "react-icons/fa6";
 import { TbHeadset } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiLogoutCircleRLine } from "react-icons/ri";
@@ -19,7 +19,7 @@ import { FiInfo } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import CartItem from '../cart/CartItem';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store/store';
 import { clearCart } from '@/redux/features/cartSlice';
 import useAuth from '@/generic/hooks/auth/useAuth';
@@ -36,6 +36,8 @@ const Header = () => {
     };
 
     const products = useSelector((state: RootState) => state.cart.products);
+    const favorites = useAppSelector(state => state.favorite.favorites || []);
+
     const totalCart = products.reduce((total, item) => total + item.price * item.quantity, 0);
     const dispatch = useAppDispatch();
 
@@ -70,7 +72,11 @@ const Header = () => {
                         <IoCartOutline size={20} /> My Cart {products.length > 0 ? <span>({products.length})</span> : <></>}
                     </button>
                     <Link href="/saved" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]">
-                        <MdFavoriteBorder size={20} /> Saved
+                        {favorites.length > 0 ? (
+                            <FaHeart size={30} className="h-5 w-5 font-bold text-red-500" />
+                        ) : (
+                            <FaRegHeart size={30} className="h-5 w-5 font-bold" />
+                        )} Saved
                     </Link>
                     <Link href="/#OpenStore" className="text-sm border px-8 py-2 rounded flex gap-1 items-center font-medium hover:text-primary text-[#495D69]">
                         Open Store <BiStore size={20} color='#C1CF16' />

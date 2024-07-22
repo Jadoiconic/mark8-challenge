@@ -10,12 +10,18 @@ const FavoriteItems = () => {
     <div>
       <div className='py-6 text-center bg-[#F7F8FB]'>
         <h1 className='font-bold text-xl'>Saved PRoducts</h1>
-        <h4 className='text-gray-400'>8 Saved</h4>
+        <h4 className='text-gray-400'>{favorites.length} Saved</h4>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">
         {favorites.map((item, index) => (
           <div key={index}>
-            <ProductItem index={index} productName={item.productName} thumbnail={item.thumbnail} unitPrice={item.price} productId={''} />
+            <ProductItem
+              index={index}
+              productName={item.productName}
+              thumbnail={item.thumbnail}
+              unitPrice={item.price}
+              productId={item.productId}
+            />
           </div>
         ))}
       </div>
