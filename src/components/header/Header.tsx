@@ -67,7 +67,7 @@ const Header = () => {
                         <IoSearch size={20} />
                     </button>
                     <button onClick={toggleMyCart} className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]">
-                        <IoCartOutline size={20} /> My Cart {products.length > 1 ? <span>({products.length})</span> : <></>}
+                        <IoCartOutline size={20} /> My Cart {products.length > 0 ? <span>({products.length})</span> : <></>}
                     </button>
                     <Link href="/saved" className="text-sm flex gap-1 items-center font-medium hover:text-primary text-[#495D69]">
                         <MdFavoriteBorder size={20} /> Saved
@@ -168,7 +168,8 @@ const Header = () => {
                                                 productName={item.productName}
                                                 price={item.price}
                                                 quantity={item.quantity}
-                                                index={index} />
+                                                index={index}
+                                                thumbnail={item.thumbnail} />
                                         ))}
                                     </div>
 

@@ -1,14 +1,29 @@
-import { configureStore } from '@reduxjs/toolkit'
-import cartReducer from '../features/cartSlice'
 
-export const store = () => {
-  return configureStore({
-    reducer: {
-      cart: cartReducer
-    },
-  })
-}
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "../features/rootReducer";
+import { loadState, saveState } from "./localStorage";
 
-export type AppStore = ReturnType<typeof store>
-export type RootState = ReturnType<AppStore['getState']>
-export type AppDispatch = AppStore['dispatch']
+
+const preloadedState = loadState();
+
+
+const store = configureStore({
+  reducer: rootReducer,
+  preloadedState
+});
+
+
+store.subscribe(() => {
+  saveState({
+    cart: store.getState().cart,
+    favorite: store.getState().favorite
+  });
+});
+
+
+export default store;
+
+
+export type AppStore = typeof store;
+export type RootState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];

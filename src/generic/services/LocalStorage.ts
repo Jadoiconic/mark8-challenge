@@ -27,13 +27,18 @@ export function saveUserAuth(user: ServerAuthResponse) {
     localStorage.setItem(LOCAL_STORAGE_ACCESS_KEY.ACCESS_TOKEN, JSON.stringify(user))
 }
 
-export function retrieveUserAuth(user: ServerAuthResponse) {
-    const result = localStorage.getItem(LOCAL_STORAGE_ACCESS_KEY.ACCESS_TOKEN)
-    if (result == null) return null
+export function retrieveUserAuth() {
+    const result = localStorage.getItem(LOCAL_STORAGE_ACCESS_KEY.ACCESS_TOKEN);
+    if (result === null) {
+        console.log("No token found in local storage.");
+        return null;
+    }
+
     try {
-        const data = JSON.parse(result)
-        return data
+        const data = JSON.parse(result);
+        return data;
     } catch (error) {
-        return null
+        console.error("Error parsing JSON from local storage:", error);
+        return null;
     }
 }

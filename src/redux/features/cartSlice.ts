@@ -1,9 +1,11 @@
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Product {
     productName: string;
     price: number;
     quantity: number;
+    thumbnail: string
 }
 
 interface CartState {
@@ -11,11 +13,7 @@ interface CartState {
 }
 
 const initialState: CartState = {
-    products: [
-        { productName: "iPhone", price: 8000, quantity: 2 },
-        { productName: "iPad", price: 5000, quantity: 1 },
-        { productName: "Headset", price: 800, quantity: 4 },
-    ]
+    products: []
 };
 
 const cartSlice = createSlice({
@@ -46,7 +44,7 @@ const cartSlice = createSlice({
         },
         clearCart: (state) => {
             state.products = [];
-          }
+        }
     }
 });
 

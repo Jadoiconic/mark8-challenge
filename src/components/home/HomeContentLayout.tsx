@@ -8,9 +8,9 @@ const HomeContentLayout = () => {
   return (
     <DefaultLayOut>
       <div className='w-full bg-white'>
-        <div>
+        {/* <div>
           <SearchBox />
-        </div>
+        </div> */}
         <div>
           <ProductList />
         </div>

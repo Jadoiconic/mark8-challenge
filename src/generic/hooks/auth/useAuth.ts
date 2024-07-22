@@ -99,10 +99,10 @@ function useAuth() {
             setLoading(true);
             setError(null);
             const response = await fetch(url, requestOptions);
-            const token = await response.json();
-            saveUserAuth(token.data);
+            const json = await response.json();
+            saveUserAuth(json.data);
             setLoading(false);
-            return token.data;
+            return json.data;
         } catch (error) {
             const internalServerError = {
                 error: "Internal Server Error",
