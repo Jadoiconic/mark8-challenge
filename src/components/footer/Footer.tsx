@@ -20,8 +20,8 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className=" text-black">
-                <span className='font-semibold'><FaRegCopyright size={20} /> Mark8</span>  <span className='text-[#495D69]'>By Awesomity Ltd</span>
+            <div className=" text-black flex">
+                <FaRegCopyright size={20} /><span className='font-semibold'> Mark8</span>  <span className='text-[#495D69]'>By Awesomity Ltd</span>
             </div>
             <div className='flex text-black items-center'>
                 <Link href="#" className='py-2 px-2'>
