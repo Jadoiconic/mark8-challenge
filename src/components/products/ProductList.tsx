@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import TopStore from './TopStore';
 import ProductItem from './ProductItem';
 import Button from '@/generic/components/button/Button';
-import useFetch from '@/generic/hooks/fetch/useFetch';
 
 import { LuFilter, LuSettings2 } from "react-icons/lu";
 import { LuLayoutGrid } from "react-icons/lu";
@@ -13,7 +12,6 @@ import { IoSearch } from "react-icons/io5";
 import { LuPackage } from "react-icons/lu";
 import { FaChevronDown } from "react-icons/fa";
 import { retrieveUserAuth } from '@/generic/services/LocalStorage';
-import Skeleton from '@/generic/components/skeleton/Skeleton';
 
 const ProductList = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -143,7 +141,7 @@ const ProductList = () => {
               onChange={handleProductSearchChange}
               type="text"
               placeholder="What are you looking for?"
-              className="w-full py-3 pl-10 pr-10 rounded bg-[#2b3240] text-white placeholder-gray-400"
+              className="w-full py-3 pl-10 pr-10 rounded-lg bg-[#2b3240] text-white placeholder-gray-400"
             />
 
             <IoSearch

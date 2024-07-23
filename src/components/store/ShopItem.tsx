@@ -18,9 +18,9 @@ const ShopItem = () => {
                     </div>
                 </div>
                 <div className='flex space-x-2'>
-                    <button className='bg-[#C1CF16] px-4 py-2 rounded flex space-x-2 text-sm  font-medium'><FaRegUser size={20}/><span>View Profile</span></button>
-                    <button  className='border px-4 py-2 rounded flex space-x-2 text-sm  font-medium'><IoCallOutline size={20} /></button>
-                    <button  className='border px-4 py-2 rounded flex space-x-2 text-sm  font-medium'><FaRegHeart size={20} /></button>
+                    <button className='bg-[#C1CF16] px-4 py-2 rounded flex space-x-2 text-sm  font-medium'><FaRegUser size={20} /><span>View Profile</span></button>
+                    <button className='border px-4 py-2 rounded flex space-x-2 text-sm  font-medium'><IoCallOutline size={20} /></button>
+                    <button className='border px-4 py-2 rounded flex space-x-2 text-sm  font-medium'><FaRegHeart size={20} /></button>
                 </div>
             </div>
             {/* shopItem body */}
@@ -29,9 +29,9 @@ const ShopItem = () => {
                     <h1 className='font-bold'>About</h1>
                 </div>
                 <div className='flex space-x-2'>
-                    {Array.from({length:3}).map((_,index)=>(
+                    {Array.from({ length: 3 }).map((_, index) => (
                         <div key={index}>
-                        <ProductItem index={index} />
+                            <ProductItem index={index} productName={''} thumbnail={''} unitPrice={0} productId={''} />
                         </div>
                     ))}
                 </div>

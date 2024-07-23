@@ -170,12 +170,15 @@ const Header = () => {
 
                                     <div className='px-4 py-4'>
                                         {products.map((item, index) => (
-                                            <CartItem
-                                                productName={item.productName}
-                                                price={item.price}
-                                                quantity={item.quantity}
-                                                index={index}
-                                                thumbnail={item.thumbnail} />
+                                            <div key={index}>
+                                                <CartItem
+                                                    productName={item.productName}
+                                                    price={item.price}
+                                                    quantity={item.quantity}
+                                                    index={index}
+                                                    thumbnail={item.thumbnail}
+                                                />
+                                            </div>
                                         ))}
                                     </div>
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { BiPhone } from 'react-icons/bi';
-import { FaRegHeart, FaHeart, FaRegStar } from 'react-icons/fa';
+import { FaRegHeart, FaRegStar } from 'react-icons/fa';
 import { IoMdMore } from 'react-icons/io';
 import Button from '@/generic/components/button/Button';
 import ProductItem from './ProductItem';
@@ -11,11 +11,34 @@ import { useParams } from 'next/navigation';
 import { retrieveUserAuth } from '@/generic/services/LocalStorage';
 import Skeleton from '@/generic/components/skeleton/Skeleton';
 
+interface Reviews {
+    id: string
+    rating: number
+    comment: string
+}
+
+interface Product {
+    id: string
+    name: string
+    thumbnail: [string]
+    inStock: boolean
+    unitPrice: number
+    originalPrice: number
+    description: string
+    reviews: [Reviews]
+    createdBy: {
+        id: string
+        email: string
+    }
+
+}
+
+
 const ProductDetails = () => {
-    const [product, setProduct] = useState(null);
+    const [product, setProduct] = useState<Product>();
     const [isSelected, setIsSelected] = useState(0);
     const { id } = useParams();
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -74,7 +97,7 @@ const ProductDetails = () => {
             <div className='flex justify-between space-x-5'>
                 <div className='rounded-lg bg-white overflow-hidden border md:w-1/3'>
                     <div className='bg-[#F7F8FB] h-[40vh] w-full'>
-                        <img src={product.thumbnail[isSelected]} className='w-full h-full object-cover' alt={product.name} />
+                        <img src={product.thumbnail[isSelected]} className='w-full h-full object-fit' alt={product.name} />
                     </div>
                     <div className='p-2 flex space-x-1'>
                         {product.thumbnail.map((thumb, index) => (

@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchBox from '../search/SearchBox';
 import DefaultLayOut from '../layout/DefaultLayOut';
 import ProductList from '../products/ProductList';
 import OpenYourStore from '../store/OpenYourStore';

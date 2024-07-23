@@ -14,9 +14,9 @@ const OpenYourStore = () => {
           type={'text'}
           onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setEmail(e.target.value)}
           placeholder={'Enter your Email'}
-          className='py-2 px-8 md:w-[50vh] rounded bg-[#eee]'
+          className='py-2 px-8 md:w-[50vh] rounded-lg bg-[#eee]'
         />
-        <button  className='py-2 px-8 bg-[#C1CF16] rounded flex items-center space-x-2'><span>Submit</span> <FaLongArrowAltRight size={20} /></button>
+        <button className='py-2 px-8 bg-[#C1CF16] rounded flex items-center space-x-2'><span>Submit</span> <FaLongArrowAltRight size={20} /></button>
       </div>
     </div>
   )
